@@ -300,6 +300,13 @@ public class SDBMHash
 		"GlobalAIValueTuner",
 		"TriggerFilter",
 
-		"Costume"
+		"Costume",
+
+		"global",
+		"BounceTarget",
+		"DebugText",
+		"Frame",
+		"Animation",
+		"StreamScripter"
 	};
 }

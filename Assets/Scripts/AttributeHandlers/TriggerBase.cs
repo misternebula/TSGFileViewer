@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 namespace AttributeHandlers
@@ -94,9 +95,14 @@ namespace AttributeHandlers
 
 		private void OnDrawGizmos()
 		{
+			Gizmos.color = new Color(0, 1, 0, 0.1f);
+
 			Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
 			Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
+			Gizmos.DrawCube(Vector3.zero, Vector3.one);
 			Gizmos.matrix = Matrix4x4.identity;
+
+			Handles.Label(transform.position, m_target);
 		}
 	}
 }

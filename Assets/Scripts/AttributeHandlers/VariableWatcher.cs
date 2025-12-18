@@ -80,12 +80,5 @@ namespace AttributeHandlers
 				}
 			}
 		}
-
-		private void OnDrawGizmos()
-		{
-			Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
-			Gizmos.DrawWireCube(Vector3.zero, Vector3.one);
-			Gizmos.matrix = Matrix4x4.identity;
-		}
 	}
 }

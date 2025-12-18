@@ -6,7 +6,11 @@ namespace AttributeHandlers
 {
 	public class CSystemCommands : MonoBehaviour, IAttributeHandler
 	{
+		public int unk_0;
 		public RwMatrixTag m_matrix;
+		public int unk_2;
+		public int unk_3;
+		public int unk_4;
 
 		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
@@ -15,6 +19,7 @@ namespace AttributeHandlers
 				switch (attr.Index)
 				{
 					case 0:
+						unk_0 = attr.Data.ToInt32BigEndian();
 						break;
 
 					case 1:
@@ -25,12 +30,15 @@ namespace AttributeHandlers
 					}
 
 					case 2:
+						unk_2 = attr.Data.ToInt32BigEndian();
 						break;
 
 					case 3:
+						unk_3 = attr.Data.ToInt32BigEndian();
 						break;
 
 					case 4:
+						unk_4 = attr.Data.ToInt32BigEndian();
 						break;
 
 					default:

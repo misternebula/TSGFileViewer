@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using Editor.RWReader;
-using Editor.RWReader.Sections;
+using RWReader;
+using RWReader.Sections;
 using UnityEngine;
 
 namespace Assets.Scripts.Editor

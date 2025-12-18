@@ -1,6 +1,11 @@
-﻿using System;
+﻿using Assets.Scripts.ResourceHandlers;
+using Assets.Scripts.Resources;
+using System;
+using System.Collections.Generic;
 using System.IO;
+using System.Text;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class EAStreamFile
 {
@@ -98,7 +103,7 @@ public class EAStreamFile
 
 		reader.BaseStream.Position = pSectionArr;
 
-		Debug.Log($"{nSections} sections.");
+		//Debug.Log($"{nSections} sections.");
 
 		var sections = new StreamSection[nSections];
 
@@ -123,7 +128,7 @@ public class EAStreamFile
 
 		for (var i = 0; i < nSections; i++)
 		{
-			Debug.Log($"SECTION {i + 1}:");
+			//Debug.Log($"SECTION {i + 1}:");
 			var section = sections[i];
 			ReadSection(reader, section);
 		}
@@ -157,7 +162,7 @@ public class EAStreamFile
 		var chunkIndex = 0;
 		while (readAnotherChunk)
 		{
-			Debug.Log($"CHUNK {chunkIndex + 1}:");
+			//Debug.Log($"CHUNK {chunkIndex + 1}:");
 			ReadChunk(actualReader, section);
 			chunkIndex++;
 
@@ -215,17 +220,27 @@ public class EAStreamFile
 			else
 			{
 				var fileName = reader.ReadRWString();
-				Console.WriteLine($" - Filename: {fileName}");
-				var guid = reader.ReadBytes(16);
+				//Debug.Log($" - Filename: {fileName}");
+				var guid = new Guid128(reader);
 				var resourceTypeName = reader.ReadRWString();
-				Console.WriteLine($" - Resource Type: {resourceTypeName}");
+				//Debug.Log($" - Resource Type: {resourceTypeName}");
 				var fullPath = reader.ReadRWString();
-				Console.WriteLine($" - Path: {fullPath}");
+				//Debug.Log($" - Path: {fullPath}");
 				reader.ReadBytes(12);
 				var size = reader.ReadInt32BigEndian();
-				Console.WriteLine($" - Size: {size}");
-				reader.ReadBytes(4);
+				//Debug.Log($" - Size: {size} (position now {reader.BaseStream.Position:X8})");
+				reader.Align(16);
 				var fileBytes = reader.ReadBytes(size);
+
+				if (ResourceHandlerManager.HandlerExists(resourceTypeName))
+				{
+					var handler = ResourceHandlerManager.GetHandler(resourceTypeName);
+					handler.HandleBytes(fileBytes, guid);
+				}
+				else
+				{
+					Debug.LogWarning($"No handler found for {resourceTypeName} ({new SDBMHash(resourceTypeName).Value:X8}) at path {(fullPath)}");
+				}
 			}
 
 			reader.BaseStream.Position = fileStart + fileSize;
@@ -236,7 +251,7 @@ public class EAStreamFile
 		}
 		else if (chunkType == 0x2207) // SimGroup
 		{
-			Debug.Log("(SimGroup)");
+			//Debug.Log("(SimGroup)");
 
 			reader.ReadBytes(2); // padding
 			var fileSize = reader.ReadInt32(); // little endian

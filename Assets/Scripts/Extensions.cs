@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.IO;
 using System.Runtime.InteropServices;
 using System.Text;
+using RWReader.RWStructs;
+using Unity.VisualScripting.Antlr3.Runtime;
 using UnityEngine;
 
 public static class Extensions
@@ -110,7 +112,19 @@ public static class Extensions
 	{
 		var length = reader.ReadInt32BigEndian();
 		var bytes = reader.ReadBytes(length);
-		return Encoding.Default.GetString(bytes);
+
+		var sb = new StringBuilder();
+		foreach (var b in bytes)
+		{
+			if (b == 0x00)
+			{
+				break;
+			}
+
+			sb.Append((char)b);
+		}
+
+		return sb.ToString();
 	}
 
 	public static short ReadInt16BigEndian(this BinaryReader reader) => BinaryPrimitives.ReadInt16BigEndian(reader.ReadBytes(2));
@@ -175,4 +189,7 @@ public static class Extensions
 
 		return BitConverter.ToSingle(arr);
 	}
+
+	public static Sphere ReadRwSphere(this BinaryReader reader)
+		=> new(reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle(), reader.ReadSingle());
 }

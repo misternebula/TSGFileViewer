@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Scripts.AttributeHandlers;
 using AttributeHandlers;
 using UnityEngine;
 public class SimGroup
@@ -9,7 +10,7 @@ public class SimGroup
 	{
 		{ 0x4B590617, typeof(FuncSpawn) },
 		{ 0xB390B11A, typeof(CSystemCommands)},
-		{ 0xC8C5D222, typeof(EnterExitTrigger)},
+		//{ 0xC8C5D222, typeof(EnterExitTrigger)},
 		{ 0xD16A98A9, typeof(TriggerBase)},
 		{ 0x7BE194EE, typeof(AndEventGate)},
 		{ 0x539B225A, typeof(LoadMusicProject)},
@@ -21,7 +22,14 @@ public class SimGroup
 		{ 0xB1CF0B4B, typeof(EntityDamageDealer)},
 		{ 0x5FEF7F11, typeof(TestEntityExists)},
 		{ 0xF26BB307 ,typeof(TriggerHurt)},
-		{ 0xCC6D6B17, typeof(TestPlayerInput)}
+		{ 0xCC6D6B17, typeof(TestPlayerInput)},
+		{ 0x87B7A547, typeof(EventText)},
+		//{ 0xB6912FFB, typeof(ChatterAssetSet)},
+		{ 0xAE986323, typeof(Animated)},
+		{ 0x6DF50074, typeof(MultiManager)},
+		{ 0x5EE8CE40, typeof(VariableOperator) },
+		{ 0x38523FC3, typeof(Entity)},
+		{ 0x862623C0, typeof(DebugText)}
 	};
 
 	public class EntityPacket
@@ -77,6 +85,8 @@ public class SimGroup
 		reader.BaseStream.Position = ppEntPackets;
 		var pEntPackets = reader.ReadUInt32BigEndian();
 
+		var simgroupParentGo = new GameObject(guid.ToString());
+
 		reader.BaseStream.Position = pEntPackets;
 
 		var verbose = false;
@@ -112,7 +122,7 @@ public class SimGroup
 			//Console.WriteLine($"GUID: {entPacket.GUID}");
 			//if (verbose)
 			//{
-			Debug.Log($"Behaviour ID: {entPacket.BehaviorID}");
+			//Debug.Log($"Behaviour ID: {entPacket.BehaviorID}");
 			//}
 
 			if (entPacket.nAttachedRes > 0 && verbose)
@@ -138,6 +148,7 @@ public class SimGroup
 			reader.BaseStream.Position = savedPos + (4 * entPacket.nAttachedRes);
 
 			var go = new GameObject(entPacket.BehaviorID.ToString());
+			go.transform.parent = simgroupParentGo.transform;
 
 			entPacket.AttributePackets = new AttrPacket[entPacket.nAttrPackets];
 			savedPos = reader.BaseStream.Position;
@@ -232,6 +243,8 @@ public class SimGroup
 					var comp = go.AddComponent<DUMMY>();
 					comp.Name = attrPacket.GUID.ToString();
 					comp.nAttributes = attrPacket.nAttrs;
+
+					comp.HandleAttributes(reader, attrPacket);
 				}
 
 				entPacket.AttributePackets[j] = attrPacket;
