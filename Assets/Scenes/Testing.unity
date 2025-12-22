@@ -162,8 +162,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
-  STRsToLoad:
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
   - loc/loc
+  - loc/loc/story_mode/story_mode_design
+  - loc/loc/zone01
+  - loc/loc/zone02
+  - loc/loc/zone03
+  - loc/loc/zone04
+  - loc/loc/zone05
+  - loc/loc/zone06
 --- !u!4 &364778389
 Transform:
   m_ObjectHideFlags: 0

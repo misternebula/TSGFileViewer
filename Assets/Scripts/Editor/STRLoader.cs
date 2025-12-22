@@ -7,6 +7,7 @@ namespace Editor
 	{
 		string loadSTRButton = "Load STR";
 		string filePath = "";
+		string usrdirfolder = "";
 
 		[MenuItem("Window/Simpsons/STR")]
 		public static void ShowWindow()
@@ -16,6 +17,7 @@ namespace Editor
 
 		void OnGUI()
 		{
+			usrdirfolder = GUILayout.TextField(usrdirfolder);
 			filePath = GUILayout.TextField(filePath);
 
 			EditorGUILayout.BeginHorizontal();
@@ -24,7 +26,7 @@ namespace Editor
 				if (filePath != "")
 				{
 					SDBMHash.PrecomputeHashes();
-					EAStreamFile.LoadSTRFile(filePath);
+					EAStreamFile.LoadSTRFile(usrdirfolder, filePath);
 				}
 			}
 			EditorGUILayout.EndHorizontal();

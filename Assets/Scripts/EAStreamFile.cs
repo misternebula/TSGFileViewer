@@ -51,9 +51,9 @@ public class EAStreamFile
 		return streamFile;
 	}
 
-	public static void LoadSTRFile(string filePath)
+	public static void LoadSTRFile(string usrdirPath, string filePath)
 	{
-		var actualFilePath = Path.Join(@"F:\SimpsonsGame\PS3_GAME\USRDIR\", filePath) + ".str";
+		var actualFilePath = Path.Join(usrdirPath, filePath) + ".str";
 
 		Debug.Log($"Loading {actualFilePath}");
 		var stream = new MemoryStream(File.ReadAllBytes(actualFilePath));
@@ -99,7 +99,7 @@ public class EAStreamFile
 
 				var containingFolder = new DirectoryInfo(Path.GetDirectoryName(actualFilePath)).Name;
 
-				LoadSTRFile(containingFolder + "\\" + newStreamFile.FileName);
+				LoadSTRFile(usrdirPath, containingFolder + "\\" + newStreamFile.FileName);
 			}
 		}
 

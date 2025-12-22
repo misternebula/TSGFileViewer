@@ -7,8 +7,9 @@ namespace Assets.Scripts
 {
     public class Loader : MonoBehaviour
     {
-	    //public string STRToLoad = "frontend/frontend";
-	    public List<string> STRsToLoad = new List<string>()
+	    public string UsrdirFolder;
+
+		public List<string> StrFilesToLoad = new List<string>()
 	    {
 		    "frontend/frontend"
 	    };
@@ -17,9 +18,9 @@ namespace Assets.Scripts
 	    {
 			SDBMHash.PrecomputeHashes();
 
-			foreach (var item in STRsToLoad)
+			foreach (var item in StrFilesToLoad)
 			{
-				EAStreamFile.LoadSTRFile(item);
+				EAStreamFile.LoadSTRFile(UsrdirFolder, item);
 			}
 	    }
     }
