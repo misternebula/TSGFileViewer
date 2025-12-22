@@ -1,14 +1,15 @@
-﻿using System.IO;
+﻿using Assets.Scripts;
+using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class LoadMusicProject : MonoBehaviour, IAttributeHandler
+	public class LoadMusicProject : AttributeHandler
 	{
 		public string m_targetName;
 		public Guid128 m_musicProjectGuid;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

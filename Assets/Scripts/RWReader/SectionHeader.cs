@@ -2,6 +2,7 @@
 
 namespace RWReader
 {
+	[Serializable]
 	public struct SectionHeader
 	{
 		public int ClumpID;

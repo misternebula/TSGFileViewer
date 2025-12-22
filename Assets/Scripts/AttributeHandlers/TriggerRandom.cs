@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	internal class TriggerRandom : MonoBehaviour, IAttributeHandler
+	internal class TriggerRandom : AttributeHandler
 	{
 		public string m_targetName;
 		public Output[] m_arrOutput = new Output[8];
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			for (var i = 0; i < 8; i++)
 			{

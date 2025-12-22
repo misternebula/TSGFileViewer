@@ -1,9 +1,10 @@
 ﻿using System.IO;
+using Assets.Scripts;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class MultiRemoveTarget : MonoBehaviour, IAttributeHandler
+	public class MultiRemoveTarget : AttributeHandler
 	{
 		public const int MAX_REMOVE = 8;
 
@@ -11,7 +12,7 @@ namespace AttributeHandlers
 		public Guid128[] m_arrEntityGuid = new Guid128[MAX_REMOVE];
 		public uint m_options;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

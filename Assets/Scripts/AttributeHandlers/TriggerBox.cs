@@ -1,11 +1,12 @@
-﻿using System.IO;
+﻿using Assets.Scripts;
+using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class TriggerBox : MonoBehaviour, IAttributeHandler
+	public class TriggerBox : AttributeHandler
 	{
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			
 		}

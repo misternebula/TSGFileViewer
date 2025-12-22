@@ -155,29 +155,24 @@ namespace Assets.Scripts
 			    if (part.m_classID == 835904732)
 			    {
 				    // ModelPart
-				    if (part.m_pName != "ModelPart")
-				    {
-					    throw new NotImplementedException();
-				    }
 
 				    var attribute = part.m_pAttributeArr[0];
 
-				    if (attribute.m_pName != "Model")
-				    {
-					    throw new NotImplementedException();
-				    }
-
 				    if (attribute.m_valueType != MetaModel.MM_ValueType.ASSET)
 				    {
-					    throw new NotImplementedException();
-				    }
+						Debug.LogError($"ValueType is not Asset! ValueType: {attribute.m_valueType}", this);
+						Debug.Break();
+						return;
+					}
 
 				    var asset = attribute.GetAsset();
 				    var resource = ResourceHandlerManager.FindResourceById(asset.m_GUID);
 
 				    if (resource is not EARS_MESH readFile)
 				    {
-					    throw new NotImplementedException();
+						Debug.LogError($"Resource is not EARS_MESH! Type: {resource.GetType().Name}", this);
+						Debug.Break();
+						return;
 				    }
 
 				    if (HashToShader.Count == 0)
@@ -190,101 +185,23 @@ namespace Assets.Scripts
 					    }
 					}
 
-					var earsMeshes = readFile.SectionTree.GetChildren<EARSMesh>();
-					var meshList = new List<Mesh>();
+					var splitMeshes = readFile.GetMeshes();
 
-					foreach (var eaMesh in earsMeshes)
+					foreach (var splitMesh in splitMeshes)
 					{
-						var skin = eaMesh.Parent.GetChildren<SkinPLG>().FirstOrDefault();
-						var isSkinned = skin != null;
-
-						foreach (var submesh in eaMesh.SubmeshInfos)
-						{
-							foreach (var split in submesh.MaterialSplits)
-							{
-								var mesh = new Mesh();
-
-								var verts = submesh.Vertices.Select(x => x.Position).ToList();
-								var normals = submesh.Vertices.Select(x => x.Normal).ToList();
-								var tangents = submesh.Vertices.Select(x => x.Tangent).ToList();
-								var colors = submesh.Vertices.Select(x => x.RGBA).ToList();
-
-								var numTexCoords = submesh.Vertices[0].TexCoords.Length;
-
-								mesh.SetVertices(verts);
-								mesh.SetTriangles(split.Triangles, 0);
-
-								for (var i = 0; i < numTexCoords; i++)
-								{
-									mesh.SetUVs(i, submesh.Vertices.Select(x => x.TexCoords[i]).ToList());
-								}
-								mesh.SetNormals(normals);
-								mesh.SetTangents(tangents.Select(x => new Vector4(x.x, x.y, x.z, 1)).ToList());
-								mesh.SetColors(colors);
-								mesh.name = $"EAMesh{earsMeshes.IndexOf(eaMesh)}" +
-											$"Submesh{Array.IndexOf(eaMesh.SubmeshInfos, submesh)}" +
-											$"Material{Array.IndexOf(submesh.MaterialSplits, split)}" +
-											$"Shader{HashToShader[submesh.ShaderHash]}";
-
-								/*if (isSkinned)
-								{
-									mesh.name = "Skinned" + mesh.name;
-
-									var binMesh = eaMesh.GetSibling<BinMeshPLG>().Single();
-									var meshData = binMesh.Data[Array.IndexOf(submesh.MaterialSplits, split)];
-									var triStrip = meshData.Indices;
-									var faces = EARSMesh.StripToFaces(new EARSMesh.TriStrip() { Indices = triStrip });
-									var triList = new List<int>();
-									foreach (var item in faces)
-									{
-										triList.Add(item.one);
-										triList.Add(item.two);
-										triList.Add(item.three);
-									}
-									//mesh.SetTriangles(triList, 0);
-
-									var boneWeights = new BoneWeight[verts.Count];
-
-									for (var i = 0; i < verts.Count; i++)
-									{
-										var weight = new BoneWeight();
-
-										var bones = skin.VertexBoneMapping[i];
-										var weights = skin.WeightList[i];
-
-										weight.boneIndex0 = bones[0];
-										weight.boneIndex1 = bones[1];
-										weight.boneIndex2 = bones[2];
-										weight.boneIndex3 = bones[3];
-
-										weight.weight0 = weights[0];
-										weight.weight1 = weights[1];
-										weight.weight2 = weights[2];
-										weight.weight3 = weights[3];
-
-										boneWeights[i] = weight;
-									}
-
-									mesh.boneWeights = boneWeights;
-
-									mesh.bindposes = skin.SkinToBoneMatrix;
-								}*/
-
-								meshList.Add(mesh);
-							}
-						}
-					}
-
-					foreach (var mesh in meshList)
-					{
-						var meshObj = new GameObject(mesh.name);
+						var meshObj = new GameObject();
 						var mf = meshObj.AddComponent<MeshFilter>();
-						mf.sharedMesh = mesh;
+						mf.sharedMesh = splitMesh.UnityMesh;
 
-						meshObj.AddComponent<MeshRenderer>();
+						var renderer = meshObj.AddComponent<MeshRenderer>();
+						renderer.material = MaterialManager.Instance.CreateMaterialInstance(
+							splitMesh.Shader,
+							MaterialManager.Instance.GetTextures(splitMesh.Material));
+
 						meshObj.transform.parent = transform;
 						meshObj.transform.localScale = new Vector3(1, 1, 1);
 						meshObj.transform.localPosition = Vector3.zero;
+						meshObj.transform.localRotation = Quaternion.identity;
 					}
 				}
 		    }

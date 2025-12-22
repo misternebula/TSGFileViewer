@@ -96,17 +96,29 @@ public class RwMatrixTag
 		Pad3 = reader.ReadSingleBigEndian();
 	}
 
-	public Vector3 ExtractScale()
+	public (Vector3 position, Quaternion rotation, Vector3 scale) GetTRS()
 	{
-		return new Vector3(Right.magnitude, Up.magnitude, At.magnitude);
-	}
+		var position = new Vector3(Pos.x, Pos.y, -Pos.z);
+		var scale = new Vector3(Right.magnitude, Up.magnitude, At.magnitude);
 
-	public Matrix4x4 ToUnityMatrix()
-	{
-		return new Matrix4x4(
-			new Vector4(Right.x, Right.y, Right.z, Pad0),
-			new Vector4(Up.x, Up.y, Up.z, Pad1),
-			new Vector4(At.x, At.y, At.z, Pad2),
-			new Vector4(Pos.x, Pos.y, Pos.z, Pad3));
+		var right = Right;
+		var up = Up;
+		var forward = -At;
+
+		right.Normalize();
+		up.Normalize();
+		forward.Normalize();
+
+		right.z = -right.z;
+		up.z = -up.z;
+		forward.z = -forward.z;
+
+		// sanity checking
+		right = Vector3.Cross(up, forward).normalized;
+		up = Vector3.Cross(forward, right).normalized;
+
+		var rotation = Quaternion.LookRotation(forward, up);
+
+		return (position, rotation, scale);
 	}
 }

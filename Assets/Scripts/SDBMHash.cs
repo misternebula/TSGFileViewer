@@ -307,6 +307,8 @@ public class SDBMHash
 		"DebugText",
 		"Frame",
 		"Animation",
-		"StreamScripter"
+		"StreamScripter",
+
+		"ZoneMesh"
 	};
 }

@@ -1,10 +1,11 @@
-﻿using RWReader.RWStructs;
+﻿using Assets.Scripts;
+using RWReader.RWStructs;
 using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class VariableOperator : MonoBehaviour, IAttributeHandler
+	public class VariableOperator : AttributeHandler
 	{
 		public enum Operator
 		{
@@ -19,7 +20,7 @@ namespace AttributeHandlers
 		public Operator m_iOperator = Operator.ADD;
 		public int m_iOperand = 1;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

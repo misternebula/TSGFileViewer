@@ -24,6 +24,8 @@ public class EAStreamFile
 
 	public class StreamSection
 	{
+		public string strFilePath;
+
 		public uint memPolicyID;
 		public uint compressorID;
 		public int dataSize;
@@ -111,6 +113,7 @@ public class EAStreamFile
 		{
 			var section = new StreamSection
 			{
+				strFilePath = filePath,
 				memPolicyID = reader.ReadUInt32BigEndian(),
 				compressorID = reader.ReadUInt32BigEndian(),
 				dataSize = reader.ReadInt32BigEndian(),
@@ -235,7 +238,7 @@ public class EAStreamFile
 				if (ResourceHandlerManager.HandlerExists(resourceTypeName))
 				{
 					var handler = ResourceHandlerManager.GetHandler(resourceTypeName);
-					handler.HandleBytes(fileBytes, guid);
+					handler.HandleBytes(fileBytes, guid, section.strFilePath);
 				}
 				else
 				{
@@ -258,7 +261,7 @@ public class EAStreamFile
 			reader.ReadBytes(4);
 
 			var bytes = reader.ReadBytes(fileSize);
-			SimGroup.LoadSimGroup(bytes);
+			SimGroup.LoadSimGroup(bytes, section.strFilePath);
 		}
 		else
 		{

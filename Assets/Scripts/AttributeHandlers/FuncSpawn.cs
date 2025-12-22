@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class FuncSpawn : MonoBehaviour, IAttributeHandler
+	public class FuncSpawn : AttributeHandler
 	{
 		public Guid128 m_spawnTarget;
 		public string m_targetName;
@@ -13,7 +14,7 @@ namespace AttributeHandlers
 		// m_position
 		public uint m_funcSpawnFlags;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

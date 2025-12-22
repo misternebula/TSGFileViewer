@@ -1,16 +1,17 @@
 using System.IO;
+using Assets.Scripts;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class TestPlayerInput : MonoBehaviour, IAttributeHandler
+	public class TestPlayerInput : AttributeHandler
 	{
 		public string m_inputTargetName;
 		public string m_outputTargetName;
 		public uint m_PlayerInputPattern01;
 		public float m_waitTime;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

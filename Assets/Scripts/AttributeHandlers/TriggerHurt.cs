@@ -1,16 +1,17 @@
+using Assets.Scripts;
 using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class TriggerHurt : MonoBehaviour, IAttributeHandler
+	public class TriggerHurt : AttributeHandler
 	{
 		public float m_damageAmount;
 		public DamageType m_damageType;
 		public DamageLevel m_damageLevel;
 		public uint m_triggerHurtFlags;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

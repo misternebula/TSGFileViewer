@@ -1,9 +1,10 @@
+using Assets.Scripts;
 using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class VariableWatcher : MonoBehaviour, IAttributeHandler
+	public class VariableWatcher : AttributeHandler
 	{
 		public string m_targetName;
 		public string m_deactivate;
@@ -15,7 +16,7 @@ namespace AttributeHandlers
 		public uint m_options;
 		public int m_conditionMetThreshold;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

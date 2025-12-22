@@ -1,10 +1,11 @@
-﻿using System.IO;
+﻿using Assets.Scripts;
+using System.IO;
 using UnityEditor;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class TriggerBase : MonoBehaviour, IAttributeHandler
+	public class TriggerBase : AttributeHandler
 	{
 		public string m_targetName;
 		public string m_activate;
@@ -19,7 +20,7 @@ namespace AttributeHandlers
 		public float m_wait;
 		public float m_speedSquared;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

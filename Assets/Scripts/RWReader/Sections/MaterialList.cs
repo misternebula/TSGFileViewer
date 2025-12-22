@@ -28,5 +28,28 @@ namespace RWReader.Sections
 				MaterialIndexes[i] = reader.ReadInt32();
 			}
 		}
+
+		public Material[] GetMaterials()
+		{
+			var materials = GetChildren<Material>();
+
+			var resultMaterials = new Material[MaterialCount];
+
+			for (int i = 0; i < MaterialCount; i++)
+			{
+				var index = MaterialIndexes[i];
+
+				if (index == -1)
+				{
+					resultMaterials[i] = materials[i];
+				}
+				else
+				{
+					resultMaterials[i] = materials[index];
+				}
+			}
+
+			return resultMaterials;
+		}
 	}
 }

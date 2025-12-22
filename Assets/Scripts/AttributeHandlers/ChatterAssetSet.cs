@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.AttributeHandlers
 {
-	public class ChatterAssetSet : MonoBehaviour, IAttributeHandler
+	public class ChatterAssetSet : AttributeHandler
 	{
 		public string Unknown0;
 		public string Unknown1;
 		public int Unknown2;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

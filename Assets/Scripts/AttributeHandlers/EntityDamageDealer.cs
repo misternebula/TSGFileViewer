@@ -1,4 +1,5 @@
-﻿using System.IO;
+﻿using Assets.Scripts;
+using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
@@ -36,7 +37,7 @@ namespace AttributeHandlers
 		DamageType_MAX_VALUE = 0xC,
 	}
 
-	public class EntityDamageDealer : MonoBehaviour, IAttributeHandler
+	public class EntityDamageDealer : AttributeHandler
 	{
 		public Guid128 m_entityGUID;
 		public string m_damageMsg;
@@ -45,7 +46,7 @@ namespace AttributeHandlers
 		public DamageType m_damageType;
 		public uint m_flags;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

@@ -1,10 +1,11 @@
 ﻿using System;
 using System.IO;
+using Assets.Scripts;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class MultiManager : MonoBehaviour, IAttributeHandler
+	public class MultiManager : AttributeHandler
 	{
 		public string m_targetName;
 		public uint unk_0;
@@ -12,7 +13,7 @@ namespace AttributeHandlers
 
 		public MultiManagerEvent[] Events = new MultiManagerEvent[8];
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			for (var i = 0; i < 8; i++)
 			{

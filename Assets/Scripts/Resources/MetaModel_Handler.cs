@@ -20,13 +20,14 @@ namespace Assets.Scripts.ResourceHandlers
 		public Dictionary<Guid128, MetaModel> MetaModels = new();
 		public List<Guid128> DebugList = new();
 
-		public override void HandleBytes(byte[] data, Guid128 guid)
+		public override void HandleBytes(byte[] data, Guid128 guid, string strFilePath)
 		{
 			//Debug.Log($"Loading metamodel guid:{guid}, size = {data.Length}");
 
 			File.WriteAllBytes(@"C:\Users\hpoin\Downloads\test.dat", data);
 
 			var mm = new MetaModel();
+			mm.STRFile = strFilePath;
 			mm.GUID = guid;
 
 			var stream = new MemoryStream(data);

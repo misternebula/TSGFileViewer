@@ -34,6 +34,25 @@ namespace Assets.Scripts.Resources
 			return ResourceHandlerInstances[id];
 		}
 
+		public static List<T> GetResources<T>() where T : Resource
+		{
+			var returnResources = new List<T>();
+
+			foreach (var manager in ResourceHandlerInstances.Values)
+			{
+				var resources = manager.GetResources();
+
+				if (!resources.Any())
+				{
+					continue;
+				}
+
+				returnResources.AddRange(resources.OfType<T>());
+			}
+
+			return returnResources;
+		}
+
 		public static Resource FindResourceById(Guid128 guid)
 		{
 			if (guid == null)

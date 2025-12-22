@@ -8,13 +8,13 @@ using static UnityEngine.GraphicsBuffer;
 
 namespace AttributeHandlers
 {
-	public class Entity : MonoBehaviour, IAttributeHandler
+	public class Entity : AttributeHandler
 	{
 		public ushort m_flags = 0;
 		public Guid128 ModelGuid;
 		public Resource Resource;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

@@ -2,9 +2,11 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using UnityEngine;
 
 namespace RWReader
 {
+	[Serializable]
 	public abstract class Section
 	{
 		public SectionHeader Header;
@@ -17,9 +19,23 @@ namespace RWReader
 		public List<Section> Children = new();
 		public Section Parent;
 
+		[NonSerialized]
 		public byte[] Raw;
 
 		public abstract void Deserialize(BinaryReader reader);
+
+		public T GetChild<T>() where T : Section
+		{
+			foreach (var child in Children)
+			{
+				if (child is T section)
+				{
+					return section;
+				}
+			}
+
+			return null;
+		}
 
 		public List<T> GetChildren<T>() where T : Section
 		{
@@ -55,6 +71,7 @@ namespace RWReader
 				currentParent = currentParent.Parent;
 			}
 
+			Debug.LogWarning($"Could not find parent of {Name} of type {typeof(T).Name}. Parent:{Parent.Name}, Grandparent:{Parent.Parent.Name}");
 			return null;
 		}
 

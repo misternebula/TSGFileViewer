@@ -1,20 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Scripts;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
 
 namespace AttributeHandlers
 {
-	public class DUMMY : MonoBehaviour, IAttributeHandler
+	public class DUMMY : AttributeHandler
 	{
 		public string Name;
 		public int nAttributes;
 
 		public List<string> Attributes;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			Attributes = new List<string>(new string[nAttributes]);
 

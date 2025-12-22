@@ -6,13 +6,13 @@ using UnityEngine;
 
 namespace Assets.Scripts.AttributeHandlers
 {
-	public class Animated : MonoBehaviour, IAttributeHandler
+	public class Animated : AttributeHandler
 	{
 		public string Unknown0;
 		public int Unknown1;
 		public int Unknown2;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

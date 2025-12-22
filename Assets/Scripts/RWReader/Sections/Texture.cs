@@ -36,6 +36,9 @@ namespace RWReader.Sections
 			reader.ReadBytes(3); // TODO : is this really unused?
 		}
 
+		public string GetTextureName() => GetChildren<String>()[0].Value;
+		public string GetAlphaName() => GetChildren<String>()[1].Value;
+
 		public enum FilteringMode
 		{
 			None,

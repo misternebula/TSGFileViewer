@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
+  <metadata>
+    <id>BCnEncoder.Net</id>
+    <version>2.2.1</version>
+    <authors>Nominom</authors>
+    <license type="expression">MIT OR Unlicense</license>
+    <licenseUrl>https://licenses.nuget.org/MIT%20OR%20Unlicense</licenseUrl>
+    <projectUrl>https://github.com/Nominom/BCnEncoder.NET</projectUrl>
+    <description>BCnEncoder.NET is a library for compressing rgba images to different block-compressed formats. Both ktx and dds output file-formats are supported. It has no native dependencies and is .NET Standard 2.1 compatible.
+
+Supported formats are:
+    Raw unsigned byte R, RG, RGB and RGBA formats
+    BC1 (S3TC DXT1)
+    BC2 (S3TC DXT3)
+    BC3 (S3TC DXT5)
+    BC4 (RGTC1)
+    BC5 (RGTC2)
+    BC6 (BPTC-FLOAT)
+    BC7 (BPTC)</description>
+    <releaseNotes>2.2.1
+- Fixed divide by zero error on unsupported format.
+- Assume dds files always have at least 1 mipmap.</releaseNotes>
+    <tags>BCn BC BC1 BC2 BC3 BC4 BC5 BC6 BC6H BC7 BPTC RGTC S3TC DXT1 DXT3 DXT5 ktx dds texture compression encoding decoding decompression image gpu</tags>
+    <repository type="git" url="https://github.com/Nominom/BCnEncoder.NET" commit="7173400b43f18e646ba6dc924a070296638b2d9e" />
+    <dependencies>
+      <group targetFramework=".NETStandard2.1">
+        <dependency id="CommunityToolkit.HighPerformance" version="8.4.0" exclude="Build,Analyzers" />
+      </group>
+    </dependencies>
+  </metadata>
+</package>

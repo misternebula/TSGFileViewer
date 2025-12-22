@@ -1,15 +1,16 @@
-﻿using System.IO;
+﻿using Assets.Scripts;
+using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class TriggerAuto : MonoBehaviour, IAttributeHandler
+	public class TriggerAuto : AttributeHandler
 	{
 		public string m_targetName;
 		public float m_delay;
 		public uint m_options;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

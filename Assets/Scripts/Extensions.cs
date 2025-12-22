@@ -147,7 +147,7 @@ public static class Extensions
 
 	public static Vector3 ReadRwV3d(this BinaryReader reader)
 	{
-		return new Vector3(reader.ReadSingleBigEndian(), reader.ReadSingleBigEndian(), -reader.ReadSingleBigEndian());
+		return new Vector3(reader.ReadSingleBigEndian(), reader.ReadSingleBigEndian(), reader.ReadSingleBigEndian());
 	}
 
 	public static bool GetBit(this byte b, int n)

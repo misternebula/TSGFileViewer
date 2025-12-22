@@ -1,9 +1,10 @@
-﻿using System.IO;
+﻿using Assets.Scripts;
+using System.IO;
 using UnityEngine;
 
 namespace AttributeHandlers
 {
-	public class TestScore : MonoBehaviour, IAttributeHandler
+	public class TestScore : AttributeHandler
 	{
 		public uint m_scoreNameHash;
 		public float m_operand;
@@ -12,7 +13,7 @@ namespace AttributeHandlers
 		public string m_successMsg;
 		public string m_failMsg;
 
-		public void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
+		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)
 		{
 			foreach (var attr in attrPacket.Attributes)
 			{

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using Assets.Scripts;
 using Assets.Scripts.AttributeHandlers;
 using AttributeHandlers;
 using UnityEngine;
@@ -29,7 +30,8 @@ public class SimGroup
 		{ 0x6DF50074, typeof(MultiManager)},
 		{ 0x5EE8CE40, typeof(VariableOperator) },
 		{ 0x38523FC3, typeof(Entity)},
-		{ 0x862623C0, typeof(DebugText)}
+		{ 0x862623C0, typeof(DebugText)},
+		{ 0x77A210A2, typeof(ZoneRender)}
 	};
 
 	public class EntityPacket
@@ -60,7 +62,7 @@ public class SimGroup
 		public long ReaderPosition;
 	}
 
-	public static void LoadSimGroup(byte[] bytes)
+	public static void LoadSimGroup(byte[] bytes, string strFilePath)
 	{
 		var reader = new BinaryReader(new MemoryStream(bytes));
 
@@ -89,10 +91,7 @@ public class SimGroup
 
 		reader.BaseStream.Position = pEntPackets;
 
-		var verbose = false;
-
 		for (var i = 0; i < nEnts; i++)
-			//for (var i = 0; i < 5; i++)
 		{
 			//Console.WriteLine($"Reading entity packet @ {reader.BaseStream.Position}");
 
@@ -125,11 +124,6 @@ public class SimGroup
 			//Debug.Log($"Behaviour ID: {entPacket.BehaviorID}");
 			//}
 
-			if (entPacket.nAttachedRes > 0 && verbose)
-			{
-				Debug.Log($"Attached Resources: {entPacket.nAttachedRes}");
-			}
-
 			entPacket.AttachedResources = new Guid128[entPacket.nAttachedRes];
 			savedPos = reader.BaseStream.Position;
 			for (var j = 0; j < entPacket.nAttachedRes; j++)
@@ -139,10 +133,6 @@ public class SimGroup
 				reader.BaseStream.Position = reader.BaseStream.Position - 4 + offset;
 
 				entPacket.AttachedResources[j] = new Guid128(reader.ReadUInt32BigEndian(), reader.ReadUInt32BigEndian(), reader.ReadUInt32BigEndian(), reader.ReadUInt32BigEndian());
-				if (verbose)
-				{
-					Debug.Log($" - {entPacket.AttachedResources[j]}");
-				}
 			}
 
 			reader.BaseStream.Position = savedPos + (4 * entPacket.nAttachedRes);
@@ -154,12 +144,6 @@ public class SimGroup
 			savedPos = reader.BaseStream.Position;
 			for (var j = 0; j < entPacket.nAttrPackets; j++)
 			{
-				if (verbose)
-				{
-					Console.WriteLine($"AttrPacket {j}");
-				}
-				//Console.WriteLine($"@ {reader.BaseStream.Position}");
-
 				reader.BaseStream.Position = savedPos + (j * 4);
 				var offset = reader.ReadInt32BigEndian();
 				reader.BaseStream.Position = reader.BaseStream.Position - 4 + offset;
@@ -168,12 +152,6 @@ public class SimGroup
 				//Console.WriteLine($"@ {reader.BaseStream.Position}");
 				attrPacket.GUID = new Guid32(reader.ReadUInt32BigEndian());
 				attrPacket.nAttrs = reader.ReadUInt16BigEndian();
-
-				if (verbose)
-				{
-					Console.WriteLine($" - GUID: {attrPacket.GUID}");
-					Console.WriteLine($" - nAttrs: {attrPacket.nAttrs}");
-				}
 
 				if (attrPacket.nAttrs > 16)
 				{
@@ -184,18 +162,7 @@ public class SimGroup
 					attrPacket.BitField = reader.ReadUInt16();
 				}
 
-				if (verbose)
-				{
-					Console.WriteLine($" - BitField: {attrPacket.BitField:B}");
-				}
-
 				reader.Align(4);
-
-				/*attrPacket.Attributes = new int[attrPacket.nAttrs];
-					for (var k = 0; k < attrPacket.nAttrs; k++)
-					{
-						attrPacket.Attributes[k] = reader.ReadInt32BigEndian();
-					}*/
 
 				for (var k = 0; k < attrPacket.nAttrs; k++)
 				{
@@ -212,30 +179,24 @@ public class SimGroup
 							Data = read,
 							ReaderPosition = pos
 						});
-
-						//attrPacket.Attributes.Add((k, read));
-						if (verbose)
-						{
-							Console.WriteLine($"Bit {k} is {read:x8}");
-						}
 					}
 				}
 
 				if (AttributeHandlersDict.ContainsKey(attrPacket.GUID.Value))
 				{
 					var type = AttributeHandlersDict[attrPacket.GUID.Value];
-					//var instance = (IAttributeHandler)Activator.CreateInstance(type);
-					//instance.HandleAttributes(reader, attrPacket);
 
-					var comp = go.AddComponent(type);
-					((IAttributeHandler)comp).HandleAttributes(reader, attrPacket);
+					var comp = (AttributeHandler)go.AddComponent(type);
+					comp.STRFile = strFilePath;
+					comp.HandleAttributes(reader, attrPacket);
 
 					if (comp is CSystemCommands c && c.m_matrix != null)
 					{
-						//var go = new GameObject(entPacket.BehaviorID.ToString());
-						go.transform.position = c.m_matrix.Pos;
-						go.transform.localScale = c.m_matrix.ExtractScale();
-						go.transform.rotation = Quaternion.LookRotation(c.m_matrix.At.normalized, c.m_matrix.Up.normalized);
+						var (position, rotation, scale) = c.m_matrix.GetTRS();
+
+						go.transform.position = position;
+						go.transform.rotation = rotation;
+						go.transform.localScale = scale;
 					}
 				}
 				else
