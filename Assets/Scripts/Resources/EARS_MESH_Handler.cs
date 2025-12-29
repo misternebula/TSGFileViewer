@@ -20,6 +20,7 @@ namespace Assets.Scripts.ResourceHandlers
 			public Mesh UnityMesh;
 			public uint Shader;
 			public Material Material;
+			public int UVCount;
 		}
 
 		public Section SectionTree;
@@ -34,8 +35,9 @@ namespace Assets.Scripts.ResourceHandlers
 				var geometry = earsMesh.GetParent<Geometry>();
 				var materialList = geometry.GetChild<MaterialList>();
 				var materials = materialList.GetMaterials();
+				var binMeshPLG = earsMesh.GetSibling<BinMeshPLG>().Single();
 
-				var materialIndex = 0;
+				var splitIndex = 0;
 
 				foreach (var submesh in earsMesh.SubmeshInfos)
 				{
@@ -64,9 +66,19 @@ namespace Assets.Scripts.ResourceHandlers
 						unityMesh.SetTangents(tangents.Select(x => new Vector4(x.x, x.y, x.z, 1)).ToList());
 						unityMesh.SetColors(colors);
 
+						unityMesh.name =
+							$"Mesh:{earsMeshes.IndexOf(earsMesh)}, " +
+							$"Submesh:{Array.IndexOf(earsMesh.SubmeshInfos, submesh)}, " +
+							$"Split:{Array.IndexOf(submesh.MaterialSplits, split)}, ";
+
 						splitMesh.UnityMesh = unityMesh;
 						splitMesh.Shader = submesh.ShaderHash;
-						splitMesh.Material = materials[materialIndex++];
+
+						// TODO: work how materials are actually assigned - both of these are wrong!
+						splitMesh.Material = materials[splitIndex++];
+						//splitMesh.Material = materials[binMeshPLG.Data[splitIndex++].MaterialIndex];
+
+						splitMesh.UVCount = numTexCoords;
 
 						splitMeshes.Add(splitMesh);
 					}
@@ -81,6 +93,7 @@ namespace Assets.Scripts.ResourceHandlers
 	{
 		public Dictionary<Guid128, EARS_MESH> Meshes = new();
 		public List<Guid128> DebugList = new();
+		public List<EARSMesh> DebugList2 = new();
 
 		public override void HandleBytes(byte[] data, Guid128 guid, string strFilePath)
 		{
@@ -90,6 +103,11 @@ namespace Assets.Scripts.ResourceHandlers
 			mesh.STRFile = strFilePath;
 			mesh.GUID = guid;
 			mesh.SectionTree = section;
+
+			foreach (var item in section.GetChildren<EARSMesh>())
+			{
+				DebugList2.Add(item);
+			}
 
 			Meshes.Add(guid, mesh);
 			DebugList.Add(guid);

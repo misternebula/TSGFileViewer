@@ -39,7 +39,7 @@ namespace AttributeHandlers
 
 		private void Start()
 		{
-			if (ModelGuid == null || ModelGuid.IsClear())
+			if (ModelGuid == null || ModelGuid.IsClear() || !ModelGuid.IsValid())
 			{
 				return;
 			}

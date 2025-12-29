@@ -19,6 +19,7 @@ namespace Assets.Scripts.ResourceHandlers
 	{
 		public Dictionary<Guid128, MetaModel> MetaModels = new();
 		public List<Guid128> DebugList = new();
+		public List<MetaModel> DebugList2 = new();
 
 		public override void HandleBytes(byte[] data, Guid128 guid, string strFilePath)
 		{
@@ -268,6 +269,7 @@ namespace Assets.Scripts.ResourceHandlers
 
 			MetaModels.Add(guid, mm);
 			DebugList.Add(guid);
+			DebugList2.Add(mm);
 			//Debug.Log($"Added {guid}");
 		}
 

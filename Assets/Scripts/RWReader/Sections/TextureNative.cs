@@ -99,12 +99,40 @@ namespace RWReader.Sections
 					break;
 				}
 
-				case 405275014: // RGBA32
+				case 405275014: // BGRA32
 				{
-					var unswizzled = UnswizzleMorton(DataBytes, Width, Height, 4);
-					Texture = new Texture2D(Width, Height, TextureFormat.BGRA32, false);
-					Texture.LoadRawTextureData(unswizzled);
-					Texture.Apply(false);
+					try
+					{
+						var unswizzled = UnswizzleMorton(DataBytes, Width, Height, 4);
+						Texture = new Texture2D(Width, Height, TextureFormat.BGRA32, false);
+						Texture.alphaIsTransparency = true;
+						Texture.LoadRawTextureData(unswizzled);
+						Texture.Apply(false);
+						break;
+					}
+					catch (Exception e)
+					{
+						Debug.LogError($"Exception while deserializing {TextureName}: {e}");
+						return;
+					}
+				}
+
+				case 671088898: // A8
+				{
+					try
+					{
+						var unswizzled = UnswizzleMorton(DataBytes, Width, Height, 1);
+						Texture = new Texture2D(Width, Height, TextureFormat.Alpha8, false);
+						Texture.alphaIsTransparency = true;
+						Texture.LoadRawTextureData(unswizzled);
+						Texture.Apply(false);
+					}
+					catch (Exception e)
+					{
+						Debug.LogError($"Exception while deserializing {TextureName}: {e}");
+						return;
+					}
+					
 					break;
 				}
 

@@ -6,6 +6,7 @@ using UnityEngine;
 
 namespace RWReader.Sections
 {
+	[Serializable]
 	public class EARSMesh : Section
 	{
 		public EARSMesh()
@@ -21,8 +22,6 @@ namespace RWReader.Sections
 
 		public override void Deserialize(BinaryReader reader)
 		{
-			var geometry = GetParent<Geometry>();
-
 			reader.ReadBytes(20);
 			var dataBlockOffset = reader.ReadUInt32BigEndian();
 			var dataBlockSize = reader.ReadUInt32BigEndian();
@@ -54,7 +53,7 @@ namespace RWReader.Sections
 				reader.ReadBytes(4);
 				var info = new SubmeshInfo();
 				info.ShaderHash = reader.ReadUInt32BigEndian();
-				reader.ReadBytes(4);
+				info.Unk0 = reader.ReadUInt32BigEndian(); //reader.ReadBytes(4);
 				var mddbOffset = reader.ReadUInt32BigEndian();
 				info.MatrialSplitCount = reader.ReadUInt32BigEndian();
 				//reader.ReadBytes(4);
@@ -65,14 +64,22 @@ namespace RWReader.Sections
 
 				// mesh data description block
 				reader.BaseStream.Position = mddbOffset + 12;
-				var vertexDataBlockSize = reader.ReadUInt32BigEndian();
-				var vertexEntrySize = reader.ReadUInt32BigEndian();
-				reader.ReadBytes(8);
-				var vertexDataBlockOffset = reader.ReadUInt32BigEndian(); // from start of data block
-				reader.ReadBytes(20);
-				var stripBlockSize = reader.ReadUInt32BigEndian();
-				reader.ReadBytes(4);
-				var stripBlockOffset = reader.ReadUInt32BigEndian();
+				info.VertexDataBlockSize = reader.ReadUInt32BigEndian();
+				info.VertexEntrySize = reader.ReadUInt32BigEndian();
+				//reader.ReadBytes(8);
+				info.Unk1 = reader.ReadUInt32BigEndian();
+				info.Unk2 = reader.ReadUInt32BigEndian();
+				info.VertexDataBlockOffset = reader.ReadUInt32BigEndian(); // from start of data block
+				//reader.ReadBytes(20);
+				info.Unk3 = reader.ReadUInt32BigEndian();
+				info.Unk4 = reader.ReadUInt32BigEndian();
+				info.Unk5 = reader.ReadUInt32BigEndian();
+				info.Unk6 = reader.ReadUInt32BigEndian();
+				info.Unk7 = reader.ReadUInt32BigEndian();
+				info.StripBlockSize = reader.ReadUInt32BigEndian();
+				//reader.ReadBytes(4);
+				info.Unk8 = reader.ReadUInt32BigEndian();
+				info.StripBlockOffset = reader.ReadUInt32BigEndian();
 				info.BoundingSphere = new Sphere(reader.ReadSingleBigEndian(), reader.ReadSingleBigEndian(), reader.ReadSingleBigEndian(), reader.ReadSingleBigEndian());
 
 				reader.ReadBytes(48);
@@ -84,8 +91,18 @@ namespace RWReader.Sections
 					var split = new MaterialSplit();
 
 					split.IndexCount = reader.ReadInt32BigEndian();
-					reader.ReadBytes(28);
-					reader.ReadBytes(4);
+					//reader.ReadBytes(28);
+					//reader.ReadBytes(4);
+
+					split.Unk0 = reader.ReadUInt32BigEndian();
+					split.Unk1 = reader.ReadUInt32BigEndian();
+					split.Unk2 = reader.ReadUInt32BigEndian();
+					split.Unk3 = reader.ReadUInt32BigEndian();
+					split.Unk4 = reader.ReadUInt32BigEndian();
+					split.Unk5 = reader.ReadUInt32BigEndian();
+					split.Unk6 = reader.ReadUInt32BigEndian();
+					split.Unk7 = reader.ReadUInt32BigEndian();
+
 					split.IndexOffset = offset;
 					offset += split.IndexCount;
 
@@ -94,8 +111,8 @@ namespace RWReader.Sections
 
 				var dataBlockStart = 12 + dataBlockOffset;
 
-				var stripBlockStart = dataBlockStart + stripBlockOffset;
-				var vertexBlockStart = dataBlockStart + vertexDataBlockOffset;
+				var stripBlockStart = dataBlockStart + info.StripBlockOffset;
+				var vertexBlockStart = dataBlockStart + info.VertexDataBlockOffset;
 
 				for (var j = 0; j < info.MatrialSplitCount; j++)
 				{
@@ -160,7 +177,7 @@ namespace RWReader.Sections
 				#region Load vertex data
 
 				reader.BaseStream.Position = vertexBlockStart;
-				var vertexCount = vertexDataBlockSize / vertexEntrySize;
+				var vertexCount = info.VertexDataBlockSize / info.VertexEntrySize;
 				info.Vertices = new Vertex[vertexCount];
 
 				for (var j = 0; j < vertexCount; j++)
@@ -168,10 +185,10 @@ namespace RWReader.Sections
 					var startingPos = reader.BaseStream.Position;
 					var vertex = new Vertex();
 
-					var hasNormal = vertexEntrySize >= 28;
-					var hasTangent = vertexEntrySize == 40;
-					var hasTwentyBytes = vertexEntrySize >= 48;
-					var hasTwoUVSets = vertexEntrySize is 36 or 40 or 56;
+					var hasNormal = info.VertexEntrySize >= 28;
+					var hasTangent = info.VertexEntrySize == 40;
+					var hasTwentyBytes = info.VertexEntrySize >= 48;
+					var hasTwoUVSets = info.VertexEntrySize is 36 or 40 or 56;
 					var numUVSets = hasTwoUVSets ? 2 : 1;
 
 					Console.WriteLine($"Reading position");
@@ -294,26 +311,57 @@ namespace RWReader.Sections
 			return retList;
 		}
 
+		[Serializable]
 		public class SubmeshHeader
 		{
 			public uint SubmeshInfoBlockSize;
 			public uint SubmeshInfoBlockOffset;
 		}
 
+		[Serializable]
 		public class SubmeshInfo
 		{
 			public uint ShaderHash;
+			public uint Unk0;
 			public uint MatrialSplitCount;
+
+			public uint VertexDataBlockSize;
+			public uint VertexEntrySize;
+			public uint Unk1;
+			public uint Unk2;
+			public uint VertexDataBlockOffset;
+			public uint Unk3;
+			public uint Unk4;
+			public uint Unk5;
+			public uint Unk6;
+			public uint Unk7;
+			public uint StripBlockSize;
+			public uint Unk8;
+			public uint StripBlockOffset;
+
 			public Sphere BoundingSphere;
 			public MaterialSplit[] MaterialSplits;
 			public Vertex[] Vertices;
 		}
 
+		[Serializable]
 		public class MaterialSplit
 		{
 			public int IndexCount;
+			public uint Unk0;
+			public uint Unk1;
+			public uint Unk2;
+			public uint Unk3;
+			[NonSerialized]
+			public uint Unk4;
+			public uint Unk5;
+			public uint Unk6;
+			[NonSerialized]
+			public uint Unk7;
+
 			public int IndexOffset;
 			public TriStrip[] Strips;
+			[NonSerialized]
 			public int[] Triangles;
 		}
 

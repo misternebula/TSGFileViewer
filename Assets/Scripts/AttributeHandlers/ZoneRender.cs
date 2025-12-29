@@ -32,7 +32,8 @@ namespace Assets.Scripts.AttributeHandlers
 
 		private void Start()
 		{
-			var metaModel = ResourceHandlerManager.GetResources<MetaModel>().First(x => x.STRFile == STRFile);
+			// TODO: work out actual way of doing this
+			var metaModel = ResourceHandlerManager.GetResources<MetaModel>().First(x => x.STRFile == STRFile && x.m_uSourcePath == 0 && x.m_nVariables == 0);
 
 			var metamodelinstance = new GameObject("MetaModel Instance");
 			metamodelinstance.transform.parent = transform;

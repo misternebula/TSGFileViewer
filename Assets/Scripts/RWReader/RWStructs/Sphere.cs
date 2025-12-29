@@ -2,6 +2,7 @@
 
 namespace RWReader.RWStructs
 {
+	[Serializable]
 	public struct Sphere
 	{
 		public float X;

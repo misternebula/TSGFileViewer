@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.XR;
 
@@ -156,52 +157,78 @@ namespace Assets.Scripts
 			    {
 				    // ModelPart
 
-				    var attribute = part.m_pAttributeArr[0];
-
-				    if (attribute.m_valueType != MetaModel.MM_ValueType.ASSET)
+				    foreach (var attr in part.m_pAttributeArr)
 				    {
-						Debug.LogError($"ValueType is not Asset! ValueType: {attribute.m_valueType}", this);
-						Debug.Break();
-						return;
-					}
-
-				    var asset = attribute.GetAsset();
-				    var resource = ResourceHandlerManager.FindResourceById(asset.m_GUID);
-
-				    if (resource is not EARS_MESH readFile)
-				    {
-						Debug.LogError($"Resource is not EARS_MESH! Type: {resource.GetType().Name}", this);
-						Debug.Break();
-						return;
-				    }
-
-				    if (HashToShader.Count == 0)
-				    {
-					    foreach (var item in TSGShaders)
+					    if (attr.m_pName == "Model")
 					    {
-						    var hash = new SDBMHash(item);
-						    HashToShader.Add(hash.Value, item);
-						    //Debug.Log($"{item} : {hash}");
-					    }
+						    var asset = attr.GetAsset();
+						    var resource = ResourceHandlerManager.FindResourceById(asset.m_GUID);
+
+						    if (resource is not EARS_MESH readFile)
+						    {
+							    Debug.LogError($"Resource is not EARS_MESH! Type: {resource.GetType().Name}", this);
+							    Debug.Break();
+							    return;
+						    }
+
+						    if (HashToShader.Count == 0)
+						    {
+							    foreach (var item in TSGShaders)
+							    {
+								    var hash = new SDBMHash(item);
+								    HashToShader.Add(hash.Value, item);
+								    //Debug.Log($"{item} : {hash}");
+							    }
+						    }
+
+						    var splitMeshes = readFile.GetMeshes();
+
+						    foreach (var splitMesh in splitMeshes)
+						    {
+							    var textures = MaterialManager.Instance.GetTextures(splitMesh.Material);
+
+							    var meshObj = new GameObject(splitMesh.UnityMesh.name + $"Shader:{HashToShader[splitMesh.Shader]}, Textures:{textures.Length}, UV Sets:{splitMesh.UVCount}");
+							    var mf = meshObj.AddComponent<MeshFilter>();
+							    mf.sharedMesh = splitMesh.UnityMesh;
+
+							    var renderer = meshObj.AddComponent<MeshRenderer>();
+							    renderer.material = MaterialManager.Instance.CreateMaterialInstance(
+								    splitMesh.Shader, textures);
+
+							    meshObj.transform.parent = transform;
+							    meshObj.transform.localScale = new Vector3(1, 1, 1);
+							    meshObj.transform.localPosition = Vector3.zero;
+							    meshObj.transform.localRotation = Quaternion.identity;
+						    }
+						}
 					}
+				}
+				else if (part.m_classID == 583326711)
+				{
+					// MetaModelPart
 
-					var splitMeshes = readFile.GetMeshes();
-
-					foreach (var splitMesh in splitMeshes)
+					foreach (var attr in part.m_pAttributeArr)
 					{
-						var meshObj = new GameObject();
-						var mf = meshObj.AddComponent<MeshFilter>();
-						mf.sharedMesh = splitMesh.UnityMesh;
+						if (attr.m_pName == "fileName")
+						{
+							var asset = attr.GetAsset();
+							var resource = ResourceHandlerManager.FindResourceById(asset.m_GUID);
 
-						var renderer = meshObj.AddComponent<MeshRenderer>();
-						renderer.material = MaterialManager.Instance.CreateMaterialInstance(
-							splitMesh.Shader,
-							MaterialManager.Instance.GetTextures(splitMesh.Material));
+							if (resource is not MetaModel mm)
+							{
+								Debug.LogError($"Resource is not MetaModel! Type: {resource.GetType().Name}", this);
+								Debug.Break();
+								return;
+							}
 
-						meshObj.transform.parent = transform;
-						meshObj.transform.localScale = new Vector3(1, 1, 1);
-						meshObj.transform.localPosition = Vector3.zero;
-						meshObj.transform.localRotation = Quaternion.identity;
+							var metamodelinstance = new GameObject("MetaModel Instance");
+							metamodelinstance.transform.parent = transform;
+							metamodelinstance.transform.localPosition = Vector3.zero;
+							metamodelinstance.transform.localRotation = Quaternion.identity;
+							metamodelinstance.transform.localScale = Vector3.one;
+							var comp = metamodelinstance.AddComponent<MetaModelInstance>();
+							comp.Assign(mm);
+						}
 					}
 				}
 		    }

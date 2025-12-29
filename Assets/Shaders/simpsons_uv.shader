@@ -1,8 +1,8 @@
-Shader "Custom/simpsons_rigid"
+Shader "Custom/simpsons_uv"
 {
     Properties
     {
-        [MainTexture] _PaletteMap("Palette Map", 2D) = "white"
+        _BaseMap("Base Map", 2D) = "white"
     }
 
     SubShader
@@ -30,24 +30,24 @@ Shader "Custom/simpsons_rigid"
                 float2 uv : TEXCOORD0;
             };
 
-            TEXTURE2D(_PaletteMap);
-            SAMPLER(sampler_PaletteMap);
+            TEXTURE2D(_BaseMap);
+            SAMPLER(sampler_BaseMap);
 
             CBUFFER_START(UnityPerMaterial)
-                float4 _PaletteMap_ST;
+                float4 _BaseMap_ST;
             CBUFFER_END
 
             Varyings vert(Attributes IN)
             {
                 Varyings OUT;
                 OUT.positionHCS = TransformObjectToHClip(IN.positionOS.xyz);
-                OUT.uv = TRANSFORM_TEX(IN.uv, _PaletteMap);
+                OUT.uv = TRANSFORM_TEX(IN.uv, _BaseMap);
                 return OUT;
             }
 
             half4 frag(Varyings IN) : SV_Target
             {
-                half4 color = SAMPLE_TEXTURE2D(_PaletteMap, sampler_PaletteMap, IN.uv);
+                half4 color = SAMPLE_TEXTURE2D(_BaseMap, sampler_BaseMap, IN.uv);
                 return color;
             }
             ENDHLSL

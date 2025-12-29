@@ -31,7 +31,8 @@ public class SimGroup
 		{ 0x5EE8CE40, typeof(VariableOperator) },
 		{ 0x38523FC3, typeof(Entity)},
 		{ 0x862623C0, typeof(DebugText)},
-		{ 0x77A210A2, typeof(ZoneRender)}
+		{ 0x77A210A2, typeof(ZoneRender)},
+		//{ 0xFFD2E5B1, typeof(Base)}
 	};
 
 	public class EntityPacket
@@ -210,6 +211,8 @@ public class SimGroup
 
 				entPacket.AttributePackets[j] = attrPacket;
 			}
+
+			go.SetActive(entPacket.spawnMask == 1);
 
 			reader.BaseStream.Position = savedPos + (entPacket.nAttrPackets * 4);
 		}

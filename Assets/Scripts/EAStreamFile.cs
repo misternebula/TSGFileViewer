@@ -55,6 +55,12 @@ public class EAStreamFile
 	{
 		var actualFilePath = Path.Join(usrdirPath, filePath) + ".str";
 
+		if (!File.Exists(actualFilePath))
+		{
+			Debug.LogError($"{actualFilePath} doesn't exist!");
+			return;
+		}
+
 		Debug.Log($"Loading {actualFilePath}");
 		var stream = new MemoryStream(File.ReadAllBytes(actualFilePath));
 		var reader = new BinaryReader(stream);
