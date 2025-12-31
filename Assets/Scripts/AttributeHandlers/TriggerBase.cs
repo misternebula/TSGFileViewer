@@ -1,4 +1,5 @@
-﻿using Assets.Scripts;
+﻿using System;
+using Assets.Scripts;
 using System.IO;
 using UnityEditor;
 using UnityEngine;
@@ -15,7 +16,7 @@ namespace AttributeHandlers
 		public float m_delay;
 		public int m_count = -1;
 		public string m_reverseTarget;
-		// options?
+		public uint m_options;
 		// touch record?
 		public float m_wait;
 		public float m_speedSquared;
@@ -79,6 +80,12 @@ namespace AttributeHandlers
 							break;
 						}
 
+					case 8:
+					{
+						m_options = attr.Data.ToUInt32BigEndian();
+						break;
+					}
+
 					case 0xA:
 						{
 							m_wait = attr.Data.ToSingleBigEndian();
@@ -87,7 +94,10 @@ namespace AttributeHandlers
 
 					case 0xB:
 						{
-							m_speedSquared = attr.Data.ToSingleBigEndian();
+							// yes, this magic number is used in renderware
+							// close to miles/h -> metres/s conversion (0.44704) ??? no idea
+							m_speedSquared = attr.Data.ToSingleBigEndian() * 0.44715446f;
+							m_speedSquared *= m_speedSquared;
 							break;
 						}
 				}
@@ -96,7 +106,7 @@ namespace AttributeHandlers
 
 		private void OnDrawGizmos()
 		{
-			Gizmos.color = new Color(0, 1, 0, 0.1f);
+			Gizmos.color = new Color(0, 1, 0, 0.2f);
 
 			Gizmos.matrix = Matrix4x4.TRS(transform.position, transform.rotation, transform.localScale);
 			Gizmos.DrawWireCube(Vector3.zero, Vector3.one);

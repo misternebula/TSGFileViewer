@@ -1,7 +1,8 @@
-﻿using System;
+﻿using Assets.Scripts;
+using System;
 using System.Collections.Generic;
 using System.IO;
-using Assets.Scripts;
+using System.Text;
 using UnityEditor;
 using UnityEngine;
 using static UnityEngine.GraphicsBuffer;
@@ -42,7 +43,7 @@ namespace AttributeHandlers
 			}
 		}
 
-		private void OnDrawGizmos()
+		/*private void OnDrawGizmos()
 		{
 			if (Name == "C8C5D222 (EnterExitTrigger)")
 			{
@@ -53,6 +54,6 @@ namespace AttributeHandlers
 				Gizmos.DrawCube(Vector3.zero, Vector3.one);
 				Gizmos.matrix = Matrix4x4.identity;
 			}
-		}
+		}*/
 	}
 }

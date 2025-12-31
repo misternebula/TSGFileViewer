@@ -7,6 +7,8 @@ namespace Assets.Scripts.AttributeHandlers
 {
     public class Base : AttributeHandler
     {
+	    public Guid128 InstanceID;
+
 	    public uint m_flagsAndID = 0;
 
 		public override void HandleAttributes(BinaryReader reader, SimGroup.AttrPacket attrPacket)

@@ -11,7 +11,7 @@ public class SimGroup
 	{
 		{ 0x4B590617, typeof(FuncSpawn) },
 		{ 0xB390B11A, typeof(CSystemCommands)},
-		//{ 0xC8C5D222, typeof(EnterExitTrigger)},
+		{ 0xC8C5D222, typeof(EnterExitTrigger)},
 		{ 0xD16A98A9, typeof(TriggerBase)},
 		{ 0x7BE194EE, typeof(AndEventGate)},
 		{ 0x539B225A, typeof(LoadMusicProject)},
@@ -32,7 +32,8 @@ public class SimGroup
 		{ 0x38523FC3, typeof(Entity)},
 		{ 0x862623C0, typeof(DebugText)},
 		{ 0x77A210A2, typeof(ZoneRender)},
-		//{ 0xFFD2E5B1, typeof(Base)}
+		{ 0xFFD2E5B1, typeof(Base)},
+		{ 0xA018EA5F, typeof(FuncRotate)}
 	};
 
 	public class EntityPacket
@@ -198,6 +199,11 @@ public class SimGroup
 						go.transform.position = position;
 						go.transform.rotation = rotation;
 						go.transform.localScale = scale;
+					}
+
+					if (comp is Base b)
+					{
+						b.InstanceID = entPacket.GUID;
 					}
 				}
 				else
