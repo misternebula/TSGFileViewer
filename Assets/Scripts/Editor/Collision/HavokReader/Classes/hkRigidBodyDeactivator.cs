@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using UnityEngine;
 
 namespace Editor.Collision.HavokReader.Classes
 {
@@ -9,9 +10,10 @@ namespace Editor.Collision.HavokReader.Classes
 			Name = "hkRigidBodyDeactivator";
 		}
 
-		public override void Deserialize(BinaryReader reader)
+		public override Mesh Deserialize(BinaryReader reader)
 		{
 			base.Deserialize(reader);
+			return null;
 		}
 	}
 }

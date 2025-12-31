@@ -18,7 +18,7 @@ namespace Editor.Collision.HavokReader.Classes
 		public float MinLowFrequencyTranslation;
 		public float MinLowFrequencyRotation;
 
-		public override void Deserialize(BinaryReader reader)
+		public override Mesh Deserialize(BinaryReader reader)
 		{
 			base.Deserialize(reader);
 
@@ -41,6 +41,7 @@ namespace Editor.Collision.HavokReader.Classes
 			MinHighFrequencyRotation = reader.ReadSingleBigEndian();
 			MinLowFrequencyTranslation = reader.ReadSingleBigEndian();
 			MinLowFrequencyRotation = reader.ReadSingleBigEndian();
+			return null;
 		}
 	}
 

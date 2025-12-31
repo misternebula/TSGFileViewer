@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using UnityEngine;
 
 namespace Editor.Collision.HavokReader
 {
@@ -6,6 +7,6 @@ namespace Editor.Collision.HavokReader
 	{
 		public string Name;
 
-		public abstract void Deserialize(BinaryReader reader);
+		public abstract Mesh Deserialize(BinaryReader reader);
 	}
 }

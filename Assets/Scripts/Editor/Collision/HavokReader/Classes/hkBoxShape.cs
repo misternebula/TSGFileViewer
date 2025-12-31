@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using UnityEngine;
 
 namespace Editor.Collision.HavokReader.Classes
 {
@@ -14,13 +15,15 @@ namespace Editor.Collision.HavokReader.Classes
 		public float Z;
 		public float W;
 
-		public override void Deserialize(BinaryReader reader)
+		public override Mesh Deserialize(BinaryReader reader)
 		{
 			base.Deserialize(reader);
 			X = reader.ReadSingleBigEndian();
 			Y = reader.ReadSingleBigEndian();
 			Z = reader.ReadSingleBigEndian();
 			W = reader.ReadSingleBigEndian();
+
+			return null;
 		}
 	}
 }

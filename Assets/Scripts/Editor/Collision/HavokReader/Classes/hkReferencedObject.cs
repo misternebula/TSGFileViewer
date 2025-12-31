@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using UnityEngine;
 
 namespace Editor.Collision.HavokReader.Classes
 {
@@ -12,10 +13,11 @@ namespace Editor.Collision.HavokReader.Classes
 		public ushort MemSizeAndFlags;
 		public short ReferenceCount;
 
-		public override void Deserialize(BinaryReader reader)
+		public override Mesh Deserialize(BinaryReader reader)
 		{
 			MemSizeAndFlags = reader.ReadUInt16BigEndian();
 			ReferenceCount = reader.ReadInt16BigEndian();
+			return null;
 		}
 	}
 }

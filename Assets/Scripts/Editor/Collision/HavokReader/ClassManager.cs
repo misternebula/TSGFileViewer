@@ -10,7 +10,8 @@ namespace Editor.Collision.HavokReader
 		public static Dictionary<string, Type> ClassMap = new Dictionary<string, Type>()
 		{
 			{ "hkBoxShape", typeof(hkBoxShape) },
-			{ "hkSpatialRigidBodyDeactivator", typeof(hkSpatialRigidBodyDeactivator) }
+			{ "hkSpatialRigidBodyDeactivator", typeof(hkSpatialRigidBodyDeactivator) },
+			{ "EAStorageMeshShape", typeof(EAStorageMeshShape)}
 		};
 
 		public static HavokClass GetClass(string name)

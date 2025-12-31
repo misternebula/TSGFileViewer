@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using UnityEngine;
 
 namespace Editor.Collision.HavokReader.Classes
 {
@@ -9,9 +10,9 @@ namespace Editor.Collision.HavokReader.Classes
 			Name = "Unknown";
 		}
 
-		public override void Deserialize(BinaryReader reader)
+		public override Mesh Deserialize(BinaryReader reader)
 		{
-
+			return null;
 		}
 	}
 }
