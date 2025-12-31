@@ -11,6 +11,8 @@ namespace Assets.Scripts.Resources
 	[Serializable]
 	public class MetaModel : Resource
 	{
+		public byte[] Bytes;
+
 		[Serializable]
 		public class MM_Asset
 		{
@@ -103,6 +105,19 @@ namespace Assets.Scripts.Resources
 			public MM_Asset GetAsset()
 			{
 				return AttachedMetaModel.Assets.First(x => x.Address == GetUInt());
+			}
+
+			public RwMatrixTag GetMatrix()
+			{
+				var stream = new MemoryStream(AttachedMetaModel.Bytes);
+				var reader = new BinaryReader(stream);
+
+				reader.BaseStream.Position = GetUInt();
+				var matrix = new RwMatrixTag(reader);
+
+				reader.Dispose();
+				stream.Dispose();
+				return matrix;
 			}
 		}
 

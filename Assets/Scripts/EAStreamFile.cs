@@ -74,6 +74,8 @@ public class EAStreamFile
 		var pStreamFile = reader.ReadInt32BigEndian();  // pStreamFile
 		var pSectionArr = reader.ReadInt32BigEndian();  // pSectionArr
 
+		var strFileObj = new GameObject(filePath + ".str");
+
 		reader.BaseStream.Position = pStreamFile;
 
 		if (pStreamFile != 0)
@@ -139,13 +141,13 @@ public class EAStreamFile
 		{
 			//Debug.Log($"SECTION {i + 1}:");
 			var section = sections[i];
-			ReadSection(reader, section);
+			ReadSection(reader, section, strFileObj);
 		}
 
 		Debug.Log($"Done reading {actualFilePath}!");
 	}
 
-	public static void ReadSection(BinaryReader reader, StreamSection section)
+	public static void ReadSection(BinaryReader reader, StreamSection section, GameObject strFileObj)
 	{
 		//Console.WriteLine($"Reading section at {reader.BaseStream.Position:x8}");
 		var chunkStart = reader.BaseStream.Position;
@@ -172,7 +174,7 @@ public class EAStreamFile
 		while (readAnotherChunk)
 		{
 			//Debug.Log($"CHUNK {chunkIndex + 1}:");
-			ReadChunk(actualReader, section);
+			ReadChunk(actualReader, section, strFileObj);
 			chunkIndex++;
 
 			if (actualReader.BaseStream.Position == actualReader.BaseStream.Length)
@@ -198,7 +200,7 @@ public class EAStreamFile
 		//Console.WriteLine("Done reading section!");
 	}
 
-	public static void ReadChunk(BinaryReader reader, StreamSection section)
+	public static void ReadChunk(BinaryReader reader, StreamSection section, GameObject strFileObj)
 	{
 		//Console.WriteLine($"Reading chunk at {reader.BaseStream.Position:x8}");
 		var chunkType = reader.ReadUInt16BigEndian();
@@ -210,8 +212,8 @@ public class EAStreamFile
 			var bytes = reader.ReadBytes(section.readSize);
 			var decompressed = Refpack.Decompress(bytes);
 			var decompressedReader = new BinaryReader(new MemoryStream(decompressed));
-			ReadChunk(decompressedReader, section);
-			return;
+			ReadChunk(decompressedReader, section, strFileObj);
+			decompressedReader.Dispose();
 		}
 
 		if (chunkType == 0x1607) // Embedded Asset
@@ -267,7 +269,7 @@ public class EAStreamFile
 			reader.ReadBytes(4);
 
 			var bytes = reader.ReadBytes(fileSize);
-			SimGroup.LoadSimGroup(bytes, section.strFilePath);
+			SimGroup.LoadSimGroup(bytes, section.strFilePath, strFileObj);
 		}
 		else
 		{

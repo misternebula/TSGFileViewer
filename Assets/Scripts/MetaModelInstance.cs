@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using CommunityToolkit.HighPerformance.Helpers;
 using NUnit.Framework;
 using UnityEngine;
 using UnityEngine.XR;
@@ -141,7 +142,8 @@ namespace Assets.Scripts
 
 		    if (passingState == null)
 		    {
-			    throw new NotImplementedException("No states passed!");
+			    Debug.LogError("No states passed! Choosing first state...", this);
+			    passingState = MetaModel.States[0];
 		    }
 
 			ChangeState(passingState);
@@ -157,9 +159,24 @@ namespace Assets.Scripts
 			    {
 				    // ModelPart
 
+				    var parent = new GameObject(part.m_pName);
+				    parent.transform.parent = transform;
+				    parent.transform.localPosition = Vector3.zero;
+				    parent.transform.localRotation = Quaternion.identity;
+				    parent.transform.localScale = Vector3.one;
+
 				    foreach (var attr in part.m_pAttributeArr)
 				    {
-					    if (attr.m_pName == "Model")
+					    if (attr.m_pName == "CMD_LoadMatrix")
+					    {
+						    var matrix = attr.GetMatrix();
+						    var trs = matrix.GetTRS();
+
+						    parent.transform.localPosition = trs.position;
+						    parent.transform.localRotation = trs.rotation;
+						    parent.transform.localScale = trs.scale;
+					    }
+					    else if (attr.m_pName == "Model")
 					    {
 						    var asset = attr.GetAsset();
 						    var resource = ResourceHandlerManager.FindResourceById(asset.m_GUID);
@@ -195,21 +212,40 @@ namespace Assets.Scripts
 							    renderer.material = MaterialManager.Instance.CreateMaterialInstance(
 								    splitMesh.Shader, textures);
 
-							    meshObj.transform.parent = transform;
+							    meshObj.transform.parent = parent.transform;
 							    meshObj.transform.localScale = new Vector3(1, 1, 1);
 							    meshObj.transform.localPosition = Vector3.zero;
 							    meshObj.transform.localRotation = Quaternion.identity;
 						    }
 						}
+					    else
+					    {
+							Debug.LogWarning($"Unknown ModelPart attribute {attr.m_pName}");
+					    }
 					}
 				}
 				else if (part.m_classID == 583326711)
 				{
 					// MetaModelPart
 
+					var parent = new GameObject(part.m_pName);
+					parent.transform.parent = transform;
+					parent.transform.localPosition = Vector3.zero;
+					parent.transform.localRotation = Quaternion.identity;
+					parent.transform.localScale = Vector3.one;
+
 					foreach (var attr in part.m_pAttributeArr)
 					{
-						if (attr.m_pName == "fileName")
+						if (attr.m_pName == "CMD_LoadMatrix")
+						{
+							var matrix = attr.GetMatrix();
+							var trs = matrix.GetTRS();
+
+							parent.transform.localPosition = trs.position;
+							parent.transform.localRotation = trs.rotation;
+							parent.transform.localScale = trs.scale;
+						}
+						else if (attr.m_pName == "fileName")
 						{
 							var asset = attr.GetAsset();
 							var resource = ResourceHandlerManager.FindResourceById(asset.m_GUID);
@@ -221,15 +257,22 @@ namespace Assets.Scripts
 								return;
 							}
 
-							var metamodelinstance = new GameObject("MetaModel Instance");
-							metamodelinstance.transform.parent = transform;
-							metamodelinstance.transform.localPosition = Vector3.zero;
-							metamodelinstance.transform.localRotation = Quaternion.identity;
-							metamodelinstance.transform.localScale = Vector3.one;
-							var comp = metamodelinstance.AddComponent<MetaModelInstance>();
+							var comp = parent.AddComponent<MetaModelInstance>();
 							comp.Assign(mm);
 						}
 					}
+				}
+				else if (part.m_classID == 4017522427)
+				{
+					// VFXPart
+				}
+				else if (part.m_classID == 3871761413)
+				{
+					// CollisionPart
+				}
+				else
+				{
+					Debug.LogWarning($"Unknown part class type {part.m_classID} {part.m_pClassName}");
 				}
 		    }
 		}

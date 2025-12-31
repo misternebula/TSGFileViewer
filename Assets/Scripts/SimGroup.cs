@@ -64,7 +64,7 @@ public class SimGroup
 		public long ReaderPosition;
 	}
 
-	public static void LoadSimGroup(byte[] bytes, string strFilePath)
+	public static void LoadSimGroup(byte[] bytes, string strFilePath, GameObject strFileObj)
 	{
 		var reader = new BinaryReader(new MemoryStream(bytes));
 
@@ -90,6 +90,10 @@ public class SimGroup
 		var pEntPackets = reader.ReadUInt32BigEndian();
 
 		var simgroupParentGo = new GameObject(guid.ToString());
+		simgroupParentGo.transform.parent = strFileObj.transform;
+		simgroupParentGo.transform.localPosition = Vector3.zero;
+		simgroupParentGo.transform.localRotation = Quaternion.identity;
+		simgroupParentGo.transform.localScale = Vector3.one;
 
 		reader.BaseStream.Position = pEntPackets;
 

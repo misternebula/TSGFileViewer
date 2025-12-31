@@ -25,11 +25,10 @@ namespace Assets.Scripts.ResourceHandlers
 		{
 			//Debug.Log($"Loading metamodel guid:{guid}, size = {data.Length}");
 
-			File.WriteAllBytes(@"C:\Users\hpoin\Downloads\test.dat", data);
-
 			var mm = new MetaModel();
 			mm.STRFile = strFilePath;
 			mm.GUID = guid;
+			mm.Bytes = data;
 
 			var stream = new MemoryStream(data);
 			var reader = new BinaryReader(stream);
