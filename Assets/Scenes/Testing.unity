@@ -130,7 +130,7 @@ GameObject:
   - component: {fileID: 164277581}
   - component: {fileID: 164277580}
   m_Layer: 0
-  m_Name: colossaldonut
+  m_Name: shadow of the colossal donut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -245,7 +245,7 @@ GameObject:
   - component: {fileID: 339608685}
   - component: {fileID: 339608684}
   m_Layer: 0
-  m_Name: chocolate
+  m_Name: land of chocolate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -370,7 +370,7 @@ GameObject:
   - component: {fileID: 392212316}
   - component: {fileID: 392212315}
   m_Layer: 0
-  m_Name: bart
+  m_Name: bartman begins
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -537,7 +537,7 @@ GameObject:
   - component: {fileID: 605676775}
   - component: {fileID: 605676774}
   m_Layer: 0
-  m_Name: dolphin
+  m_Name: day of the dolphin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -889,7 +889,7 @@ GameObject:
   - component: {fileID: 1683213334}
   - component: {fileID: 1683213333}
   m_Layer: 0
-  m_Name: gts
+  m_Name: grand theft scratchy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1092,7 +1092,7 @@ GameObject:
   - component: {fileID: 2070039200}
   - component: {fileID: 2070039199}
   m_Layer: 0
-  m_Name: treehugger
+  m_Name: lisa the treehugger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
