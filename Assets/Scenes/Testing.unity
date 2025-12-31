@@ -129,8 +129,6 @@ GameObject:
   m_Component:
   - component: {fileID: 164277581}
   - component: {fileID: 164277580}
-  - component: {fileID: 164277579}
-  - component: {fileID: 164277578}
   m_Layer: 0
   m_Name: colossaldonut
   m_TagString: Untagged
@@ -138,54 +136,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &164277578
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164277577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &164277579
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 164277577}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &164277580
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -226,6 +176,64 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &295219691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 295219695}
+  - component: {fileID: 295219694}
+  m_Layer: 0
+  m_Name: cheatrix
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &295219694
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295219691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
+  - cheater/cheater
+  - cheater/cheater/story_mode/story_mode_design
+  - cheater/cheater/zone01
+  - cheater/cheater/zone02
+  - cheater/cheater/zone03
+  - cheater/cheater/zone04
+  - cheater/cheater/zone05
+  - cheater/cheater/zone06
+  - cheater/cheater/zone07
+  - cheater/cheater/zone08
+  - cheater/cheater/zone09
+  - cheater/cheater/zone10
+--- !u!4 &295219695
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 295219691}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &339608681
 GameObject:
   m_ObjectHideFlags: 0
@@ -236,8 +244,6 @@ GameObject:
   m_Component:
   - component: {fileID: 339608685}
   - component: {fileID: 339608684}
-  - component: {fileID: 339608683}
-  - component: {fileID: 339608682}
   m_Layer: 0
   m_Name: chocolate
   m_TagString: Untagged
@@ -245,54 +251,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &339608682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339608681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &339608683
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 339608681}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &339608684
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -340,8 +298,6 @@ GameObject:
   m_Component:
   - component: {fileID: 364778389}
   - component: {fileID: 364778388}
-  - component: {fileID: 364778387}
-  - component: {fileID: 364778390}
   m_Layer: 0
   m_Name: spr_hub
   m_TagString: Untagged
@@ -349,18 +305,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &364778387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364778386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &364778388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -415,42 +359,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &364778390
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 364778386}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
 --- !u!1 &392212312
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,8 +369,6 @@ GameObject:
   m_Component:
   - component: {fileID: 392212316}
   - component: {fileID: 392212315}
-  - component: {fileID: 392212314}
-  - component: {fileID: 392212313}
   m_Layer: 0
   m_Name: bart
   m_TagString: Untagged
@@ -470,54 +376,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &392212313
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392212312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &392212314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 392212312}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &392212315
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -568,8 +426,6 @@ GameObject:
   m_Component:
   - component: {fileID: 576604876}
   - component: {fileID: 576604875}
-  - component: {fileID: 576604874}
-  - component: {fileID: 576604873}
   m_Layer: 0
   m_Name: mob rules
   m_TagString: Untagged
@@ -577,54 +433,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &576604873
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576604872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &576604874
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 576604872}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &576604875
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -676,8 +484,6 @@ GameObject:
   m_Component:
   - component: {fileID: 586884135}
   - component: {fileID: 586884134}
-  - component: {fileID: 586884133}
-  - component: {fileID: 586884132}
   m_Layer: 0
   m_Name: neverquest
   m_TagString: Untagged
@@ -685,54 +491,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &586884132
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586884131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &586884133
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 586884131}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &586884134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -768,7 +526,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1400335212
+--- !u!1 &605676771
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -776,24 +534,135 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1400335216}
-  - component: {fileID: 1400335215}
-  - component: {fileID: 1400335214}
-  - component: {fileID: 1400335213}
+  - component: {fileID: 605676775}
+  - component: {fileID: 605676774}
   m_Layer: 0
-  m_Name: yokel
+  m_Name: dolphin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1400335213
+--- !u!114 &605676774
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400335212}
+  m_GameObject: {fileID: 605676771}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
+  - dayofthedolphins/dayofthedolphins
+  - dayofthedolphins/dayofthedolphins/story_mode_design
+  - dayofthedolphins/dayofthedolphins/zone01
+  - dayofthedolphins/dayofthedolphins/zone02
+  - dayofthedolphins/dayofthedolphins/zone03
+  - dayofthedolphins/dayofthedolphins/zone04
+  - dayofthedolphins/dayofthedolphins/zone05
+  - dayofthedolphins/dayofthedolphins/zone06
+--- !u!4 &605676775
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 605676771}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &670671075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 670671079}
+  - component: {fileID: 670671078}
+  m_Layer: 0
+  m_Name: big super happy fun fun game
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &670671078
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670671075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
+  - bigsuperhappy/bigsuperhappy
+  - bigsuperhappy/bigsuperhappy/story_mode/story_mode_design
+  - bigsuperhappy/bigsuperhappy/zone01
+  - bigsuperhappy/bigsuperhappy/zone02
+  - bigsuperhappy/bigsuperhappy/zone03
+  - bigsuperhappy/bigsuperhappy/zone04
+  - bigsuperhappy/bigsuperhappy/zone05
+  - bigsuperhappy/bigsuperhappy/zone06
+  - bigsuperhappy/bigsuperhappy/zone07
+  - bigsuperhappy/bigsuperhappy/zone08
+  - bigsuperhappy/bigsuperhappy/zone09
+  - bigsuperhappy/bigsuperhappy/zone10
+--- !u!4 &670671079
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 670671075}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1028344639
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1028344642}
+  - component: {fileID: 1028344641}
+  - component: {fileID: 1028344640}
+  m_Layer: 0
+  m_Name: ResourceHandlers
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1028344640
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028344639}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
@@ -823,18 +692,159 @@ MonoBehaviour:
   Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
   UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
   VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &1400335214
+--- !u!114 &1028344641
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1400335212}
+  m_GameObject: {fileID: 1028344639}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
+--- !u!4 &1028344642
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1028344639}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1193109549
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1193109553}
+  - component: {fileID: 1193109552}
+  m_Layer: 0
+  m_Name: 80 bites
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1193109552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193109549}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
+  - eighty_bites/eighty_bites
+  - eighty_bites/eighty_bites/story_mode/story_mode_design
+  - eighty_bites/eighty_bites/zone1
+  - eighty_bites/eighty_bites/zone2
+  - eighty_bites/eighty_bites/zone3
+  - eighty_bites/eighty_bites/zone4
+  - eighty_bites/eighty_bites/zone5
+  - eighty_bites/eighty_bites/zone6
+  - eighty_bites/eighty_bites/zone7
+--- !u!4 &1193109553
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1193109549}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1339768161
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1339768165}
+  - component: {fileID: 1339768164}
+  m_Layer: 0
+  m_Name: game over
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1339768164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339768161}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
+  - meetthyplayer/meetthyplayer
+  - meetthyplayer/meetthyplayer/story_mode/story_mode_design
+  - meetthyplayer/meetthyplayer/zone01
+  - meetthyplayer/meetthyplayer/zone02
+  - meetthyplayer/meetthyplayer/zone03
+  - meetthyplayer/meetthyplayer/zone04
+  - meetthyplayer/meetthyplayer/zone05
+  - meetthyplayer/meetthyplayer/zone06
+--- !u!4 &1339768165
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1339768161}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1400335212
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1400335216}
+  - component: {fileID: 1400335215}
+  m_Layer: 0
+  m_Name: yokel
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!114 &1400335215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -878,8 +888,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1683213334}
   - component: {fileID: 1683213333}
-  - component: {fileID: 1683213332}
-  - component: {fileID: 1683213331}
   m_Layer: 0
   m_Name: gts
   m_TagString: Untagged
@@ -887,54 +895,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1683213331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683213330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &1683213332
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683213330}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &1683213333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -971,6 +931,105 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1763633707
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1763633711}
+  - component: {fileID: 1763633710}
+  m_Layer: 0
+  m_Name: bargain bin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1763633710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763633707}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
+  - bargainbin/bargainbin
+  - bargainbin/bargainbin/story_mode/story_mode_design
+  - bargainbin/bargainbin/zone01
+  - bargainbin/bargainbin/zone02
+--- !u!4 &1763633711
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1763633707}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1901279917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1901279919}
+  - component: {fileID: 1901279918}
+  m_Layer: 0
+  m_Name: gamehub
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &1901279918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901279917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7062811a719aa74690136c145a46c67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Loader
+  UsrdirFolder: F:\SimpsonsGame\PS3_GAME\USRDIR
+  StrFilesToLoad:
+  - gamehub/gamehub
+  - gamehub/gamehub/zone01
+  - gamehub/gamehub/zone13
+--- !u!4 &1901279919
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1901279917}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1999390093
 GameObject:
   m_ObjectHideFlags: 0
@@ -981,8 +1040,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1999390097}
   - component: {fileID: 1999390096}
-  - component: {fileID: 1999390095}
-  - component: {fileID: 1999390094}
   m_Layer: 0
   m_Name: medal of homer
   m_TagString: Untagged
@@ -990,54 +1047,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &1999390094
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999390093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &1999390095
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1999390093}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &1999390096
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1082,8 +1091,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2070039200}
   - component: {fileID: 2070039199}
-  - component: {fileID: 2070039198}
-  - component: {fileID: 2070039197}
   m_Layer: 0
   m_Name: treehugger
   m_TagString: Untagged
@@ -1091,54 +1098,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 0
---- !u!114 &2070039197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070039196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f9f4b05295cf7c42a727f5f9a014907, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.MaterialManager
-  Rigid: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  RigidDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  RigidGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  RigidMultitone: {fileID: 4800000, guid: 487e800a36fc3984a995433bd26b0673, type: 3}
-  RigidNormalMap: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Skin: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinTextured: {fileID: 4800000, guid: 36ef08c0484b4e2488074ef6969ddedb, type: 3}
-  SkinDualTextured: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinDualTexturedUV: {fileID: 4800000, guid: 8bec6f05d20770a468eaec3197bf3290, type: 3}
-  SkinGloss: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  SkinFlipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  AA: {fileID: 0}
-  AACol: {fileID: 0}
-  AARow: {fileID: 0}
-  Edge: {fileID: 0}
-  EdgeAA: {fileID: 0}
-  Flipbook: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  ProjTex: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Chocolate: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  Sky: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
-  UV: {fileID: 4800000, guid: dd11ffb33f0b6054ba5826fab7d93eb6, type: 3}
-  VFXRigidTextured: {fileID: 4800000, guid: 156c7f729c01a8e4183bb699aac2d971, type: 3}
---- !u!114 &2070039198
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2070039196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09b33564af7106348842e6fb313b67e3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::Assets.Scripts.Resources.ResourceHandlerManager
 --- !u!114 &2070039199
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1183,13 +1142,21 @@ Transform:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
+  - {fileID: 1028344642}
   - {fileID: 364778389}
-  - {fileID: 576604876}
-  - {fileID: 1400335216}
+  - {fileID: 339608685}
+  - {fileID: 1193109553}
   - {fileID: 392212316}
+  - {fileID: 2070039200}
+  - {fileID: 576604876}
+  - {fileID: 295219695}
+  - {fileID: 605676775}
+  - {fileID: 1400335216}
+  - {fileID: 164277581}
+  - {fileID: 1763633711}
+  - {fileID: 1901279919}
   - {fileID: 586884135}
   - {fileID: 1683213334}
   - {fileID: 1999390097}
-  - {fileID: 164277581}
-  - {fileID: 2070039200}
-  - {fileID: 339608685}
+  - {fileID: 670671079}
+  - {fileID: 1339768165}
