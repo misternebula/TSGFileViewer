@@ -13,7 +13,8 @@ namespace Assets.Scripts.Resources
 		{
 			{ "rwID_TEXDICTIONARY", typeof(rwID_TEXDICTIONARY_Handler) },
 			{ "EARS_MESH", typeof(EARS_MESH_Handler)},
-			{ "MetaModel", typeof(MetaModel_Handler)}
+			{ "MetaModel", typeof(MetaModel_Handler)},
+			{ "CEC", typeof(ControllerEventConfig_Handler)}
 		};
 
 		private static Dictionary<string, IResourceHandler> ResourceHandlerInstances = new();
