@@ -49,12 +49,9 @@ public static class Extensions
 		return new Color(r, g, b, a);
 	}
 
-	/// <summary>
-	/// Reads a string from 32 bytes.
-	/// </summary>
-	public static string ReadString256(this BinaryReader reader)
+	public static string ReadStringBytes(this BinaryReader reader, int byteCount)
 	{
-		var bytes = reader.ReadBytes(32);
+		var bytes = reader.ReadBytes(byteCount);
 
 		var builder = new StringBuilder();
 

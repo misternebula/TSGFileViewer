@@ -47,8 +47,8 @@ namespace RWReader.Sections
 		{
 			DeviceID = reader.ReadInt32BigEndian();
 			FilterFlags = reader.ReadInt32BigEndian();
-			TextureName = reader.ReadString256();
-			AlphaName = reader.ReadString256();
+			TextureName = reader.ReadStringBytes(32);
+			AlphaName = reader.ReadStringBytes(32);
 			RasterFlags = reader.ReadInt32BigEndian();
 			CompressionType = reader.ReadUInt32BigEndian();
 			Width = reader.ReadUInt16BigEndian();
